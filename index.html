@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notifications</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='js/resources/App42-all-3.1.min.js'></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/pnotify.css">
+<link rel="stylesheet" type="text/css" href="css/pnotify.buttons.css">
+
+
+
+<script src='js/route/route.js'></script>
+<script src='js/controller/main.js'></script>
+<script src='js/service/service.js'></script>
+
+<script src='js/resources/pnotify.js'></script>
+<script src='js/resources/pnotify.buttons.js'></script>
+<script src='js/resources/pnotify.confirm.js'></script>
+<script src='js/resources/angular-pnotify.js'></script>
+
+
+<link rel="shortcut icon" type="images/png" href="images/settings.png" />
+
+
+</head>
+<body ng-app="notificationTemplate" ng-controller="mainController">
+
+<!-- The Modal -->
+<div id="usernameDialog" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="row">
+    <div class="col-md-12 form-group">
+    <input type="text" class="form-control" ng-model="userName" placeholder="Enter Username" />
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12 form-group">
+    <input type="button" class="col-md-12 btn btn-primary ht34" ng-model="submitUsername" value="Submit" ng-click="submitUsername()"/>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="bodyContent">
+	<div class="row mrrg0 mrlt0">
+	<div class="col-md-8 form-group">
+	<span class="label">Title</span>
+	<input type="text" class="titleBox form-control" ng-model="title" placeholder="Enter Title Here">
+	</div>
+	</div>
+
+	<div class="row mrrg0 mrlt0">
+	<div class="col-md-12 form-group">
+	<span class="label">Message</span>
+	<textarea class="messageBox form-control" ng-model="message" placeholder="Enter Message Here"></textarea>
+	</div>
+	</div>
+
+
+
+	<div class="row mrrg0 mrlt0">
+		<div class="col-md-12">
+		<input type="radio" name="Success" value="success" ng-model="notificationType"><span class="label">Success</span></div>
+		<div class="col-md-12">
+		<input type="radio" name="Error" value="error" ng-model="notificationType"><span class="label">Error</span></div>
+		<div class="col-md-12">
+		<input type="radio" name="Info" value="info" ng-model="notificationType"><span class="label">Info</span></div>
+		<div class="col-md-12">
+		<input type="radio" name="Notice" value="notice" ng-model="notificationType"><span class="label">Notice</span></div>
+
+	</div>
+
+	<div class="row">
+		<input class="btn" type="button" name="submit" ng-model="notifySubmit" value="Notify" ng-click="notify()">
+		<input class="btn" type="button" name="submit" ng-model="notifySubmit" value="Confirm Dialog" ng-click="confirmDialog()">
+	</div>
+</div>
+
+</body>
+</html>
