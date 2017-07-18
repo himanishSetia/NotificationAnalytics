@@ -4,20 +4,32 @@ notificationSample.controller('mainController',function($scope,$location,notific
 	App42.enableEventService(true);  
 	App42.enableAppStateEventTracking(true);
 	var eventService = new App42Event();  
-	$scope.notificationType = "success"
+	
 
+	var modal
+	var btn
+	var span
 
-	// Get the modal
-var modal = document.getElementById('usernameDialog');
+$scope.init = function(){
 
+// Get the modal
+modal = document.getElementById('usernameDialog');
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
+btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+span = document.getElementsByClassName("close")[0];
+$scope.notificationType = "success"
+modal.style.display = "block";
+
+}
+
+$scope.init();
 
 
-// When the user clicks on <span> (x), close the modal
+
+
+
+// When the user clicks on <span> (x), close the modal and track the event
 span.onclick = function() {
 	var eventName = "Skip_Login"
 	var date = new Date();
@@ -54,11 +66,7 @@ window.onclick = function(event) {
 
 
 
-$scope.init = function(){
- modal.style.display = "block";
-}
 
-$scope.init();
 
 
 $scope.submitUsername = function(){
@@ -155,11 +163,8 @@ notificationService.notify({
 });
 
 var properties = { "Title":$scope.title?$scope.title:"",
-	"Message":$scope.message?$scope.message:""}  
-
-	if($scope.notifySubmit == "Notify"){
-		properties["Notification Type"] = $scope.notificationType
-	}
+	"Message":$scope.message?$scope.message:"",
+"Notification Type" : "Confirm_Dialog"}  
 
 	
 	var eventName = "Confirm_Dialog"
@@ -174,15 +179,13 @@ var properties = { "Title":$scope.title?$scope.title:"",
 
 
 $scope.trackEvent = function(eventName,properties){ 
-	// App42.setLoggedInUser($scope.userName); 
-	// var eventService = new App42Event();    
 	eventService.trackEvent(eventName, properties, {        
     success: function (object) {  
         var eventObj = JSON.parse(object)  
-        console.log("Success is : " + eventObj);  
+        console.log("Success is : " , eventObj);  
     },  
     error: function (error) {  
-        console.log("Exception is : " + error);  
+        console.log("Exception is : " , error);  
     }  
 });  
 
